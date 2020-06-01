@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: "AIzaSyDV4dX9rkzmTjaEqgOxF8nlAomPxlXn-50",
+    authDomain: "https://numba-web.web.app/",
+    databaseURL: "https://numba-web.firebaseio.com",
+    projectId: "numba-web",
+    storageBucket: "Your credentials here",
+    messagingSenderId: "970044561168",
+    appId: "1:970044561168:web:6dd84ac2e605df808af795",
+  },
 };
 
 /*
