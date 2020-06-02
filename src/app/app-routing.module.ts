@@ -22,6 +22,11 @@ const routes: Routes = [
     loadChildren: () =>
       import("./play/play.module").then((m) => m.PlayPageModule),
   },
+  {
+    path: "info/:id",
+    loadChildren: () =>
+      import("./info/info.module").then((m) => m.InfoPageModule),
+  },
 ];
 
 @NgModule({
