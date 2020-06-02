@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button
+        fill="solid"
+        color="medium"
+        [routerLink]="['/info/' + (ans && ans.id)]"
+      >
+        <ion-icon name="information-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ans && ans.nickname}} {{ans && ans.unit}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row *ngFor="let row of disp">
+      <ion-col *ngFor="let n of row">
+        <strong>{{n === undefined ? " " : n}}</strong>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-grid>
+    <ion-row *ngFor="let row of [[7,8,9], [4,5,6], [1,2,3], ['-', 0, '.']]">
+      <ion-col size="4" *ngFor="let n of row">
+        <ion-button
+          (click)="inputFromPanel(n.toString())"
+          expand="full"
+          color="medium"
+          size="large"
+        >
+          <strong>{{n}}</strong></ion-button
+        >
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>about "{{numba && numba.nickname}}"</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list *ngIf="numba">
+    <ion-item>
+      <ion-label>{{numba && numba.description}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label
+        >{{numba && numba.value.length > numDigits ?
+        numba.value.slice(0,numDigits) + "..." : numba.value}} &times; 10
+        <sup>{{numba && numba.orderOfMagnitude}}</sup>
+        {{numba && numba.unit}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
