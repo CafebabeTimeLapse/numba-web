@@ -3,6 +3,7 @@ import { KEYCODE } from "../shared/enum/key-code.enum";
 import { Numba } from "../shared/models/numba";
 import { NumbaService } from "../shared/services/numba.service";
 import { ActivatedRoute } from "@angular/router";
+import { AlertController } from "@ionic/angular";
 
 @Component({
   selector: "app-play",
@@ -22,7 +23,8 @@ export class PlayPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private numbaService: NumbaService
+    private numbaService: NumbaService,
+    public alertController: AlertController
   ) {}
 
   async ngOnInit() {
@@ -36,6 +38,17 @@ export class PlayPage implements OnInit {
         this.ansString = this.ans.value + this.ans.orderOfMagnitude;
       });
     });
+  }
+
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      cssClass: "my-custom-class",
+      header: "Conguratulations!",
+      message: "You have memorized " + this.ans.nickname + ".",
+      buttons: ["OK"],
+    });
+
+    await alert.present();
   }
 
   clearDisp() {
@@ -135,6 +148,7 @@ export class PlayPage implements OnInit {
         let x = Math.floor(this.dispPos / 10);
         let y = this.dispPos % 10;
         this.disp[x][y] = "!!";
+        this.presentAlert();
       }
     }
   }

@@ -27,6 +27,23 @@ const routes: Routes = [
     loadChildren: () =>
       import("./info/info.module").then((m) => m.InfoPageModule),
   },
+  {
+    path: "admin/numba/:id",
+    loadChildren: () =>
+      import("./admin/numba/numba.module").then((m) => m.NumbaPageModule),
+  },
+  {
+    path: "admin/numba",
+    loadChildren: () =>
+      import("./admin/numba/numba.module").then((m) => m.NumbaPageModule),
+  },
+  {
+    path: "admin/numba-list",
+    loadChildren: () =>
+      import("./admin/numba-list/numba-list.module").then(
+        (m) => m.NumbaListPageModule
+      ),
+  },
 ];
 
 @NgModule({

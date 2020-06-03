@@ -21,4 +21,19 @@ export class NumbaService {
     let snapshot = this.db.collection<Numba>("const");
     return snapshot.valueChanges();
   }
+
+  update(doc: Numba) {
+    let snapshot = this.db.collection("const").doc<Numba>(doc.id);
+    return snapshot.update(doc);
+  }
+
+  create(doc: Numba) {
+    let snapshot = this.db.collection("const").doc<Numba>(doc.id);
+    return snapshot.set(doc);
+  }
+
+  delete(doc: Numba) {
+    let snapshot = this.db.collection("const").doc<Numba>(doc.id);
+    return snapshot.delete();
+  }
 }
