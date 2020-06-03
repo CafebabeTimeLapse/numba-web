@@ -27,9 +27,9 @@ export class PlayPage implements OnInit {
     public alertController: AlertController
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     this.width = 10;
-    this.height = 10;
+    this.height = 8;
     this.ansPos = 0;
     this.clearDisp();
     this.route.params.subscribe((param) => {
@@ -136,18 +136,18 @@ export class PlayPage implements OnInit {
             this.dispPos = 10 * x;
           }
         }
-        let _str = "*10^";
-        for (let i = 0; i < 4; i++) {
+        let _str = "*E";
+        for (let i = 0; i < _str.length; i++) {
           this.disp[x][i] = _str[i];
         }
-        this.dispPos += 4;
+        this.dispPos += _str.length;
       }
 
       // finished
       if (this.ansPos === this.ansString.length) {
         let x = Math.floor(this.dispPos / 10);
         let y = this.dispPos % 10;
-        this.disp[x][y] = "!!";
+        this.disp[x][y] = ".";
         this.presentAlert();
       }
     }

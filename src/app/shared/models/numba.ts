@@ -1,10 +1,12 @@
-export class Numba {
-  nickname: string;
+export interface Numba {
+  nickname?: string;
   description?: string;
   genre: string;
   orderOfMagnitude?: string;
   reference?: string;
-  value: string;
+  value?: string;
   unit?: string;
   id: string;
+  priority?: number;
+  memo?: string;
 }

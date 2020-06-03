@@ -19,6 +19,7 @@ export class InfoPage implements OnInit {
 
   ngOnInit() {
     this.numDigits = 20;
+    this.numba = { id: "", genre: "" };
     this.route.params.subscribe((param) => {
       this.numbaService.selectById(param.id).subscribe((data) => {
         this.numba = data;
