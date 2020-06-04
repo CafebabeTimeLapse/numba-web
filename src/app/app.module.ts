@@ -11,12 +11,14 @@ import { AppRoutingModule } from "./app-routing.module";
 
 import { AngularFireModule } from "@angular/fire";
 import { environment } from "src/environments/environment";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
