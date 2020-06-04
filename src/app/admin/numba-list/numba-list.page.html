@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>admin</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="primary" [routerLink]="['/admin/numba/']">
+        create
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <div *ngFor="let genre of genres">
+      <strong>{{genre}}</strong>
+      <ion-grid>
+        <ion-row *ngFor="let numba of numbaList[genre]">
+          <ion-col size="2" class="ion-align-self-center"
+            ><ion-button
+              expand="block"
+              color="secondary"
+              [routerLink]="['/admin/numba/' + numba.id]"
+              >{{numba.nickname}}</ion-button
+            ></ion-col
+          >
+          <ion-col>
+            {{numba.description}}
+            <br />
+            {{numba.value && numba.value.length > numDigits ?
+            numba.value.slice(0,numDigits) + "..." : numba.value}}
+            <span
+              *ngIf="numba.orderOfMagnitude && numba.orderOfMagnitude !== '0'"
+            >
+              &times; 10
+              <sup>{{numba.orderOfMagnitude}}</sup>
+            </span>
+            {{numba.unit}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+</ion-content>

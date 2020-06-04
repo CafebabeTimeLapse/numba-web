@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{ createMode ? "create" : "update '" + numbaNickname +"'"}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <form [formGroup]="numbaForm">
+      <ion-list>
+        <ion-item *ngIf="createMode">
+          <ion-label position="floating">id</ion-label>
+          <ion-input formControlName="id"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">genre</ion-label>
+          <ion-input formControlName="genre"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">description</ion-label>
+          <ion-input formControlName="description"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">nickname</ion-label>
+          <ion-input formControlName="nickname"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">reference</ion-label>
+          <ion-input formControlName="reference"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">order of magnitude</ion-label>
+          <ion-input formControlName="orderOfMagnitude"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">unit</ion-label>
+          <ion-input formControlName="unit"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">priority</ion-label>
+          <ion-input formControlName="priority"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">value</ion-label>
+          <ion-textarea formControlName="value"></ion-textarea>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">notes</ion-label>
+          <ion-textarea formControlName="notes"></ion-textarea>
+        </ion-item>
+      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6">
+            <ion-button
+              color="primary"
+              expand="full"
+              (click)="submit()"
+              [disabled]="numbaForm.invalid"
+            >
+              {{createMode ? "create" : "update"}}</ion-button
+            >
+          </ion-col>
+          <ion-col size="6">
+            <ion-button
+              color="danger"
+              expand="full"
+              routerDirection="back"
+              (click)="delete()"
+              [disabled]="numbaForm.invalid"
+            >
+              delete</ion-button
+            >
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </div>
+</ion-content>
