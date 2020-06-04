@@ -3,12 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { NumbaService } from "src/app/shared/services/numba.service";
 import { Numba } from "src/app/shared/models/numba";
 import { NavController } from "@ionic/angular";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormControl,
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-numba",
@@ -28,7 +23,7 @@ export class NumbaPage implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  _initializeForm(data: Numba) {
+  private _initializeForm(data: Numba) {
     this.numbaForm = this.formBuilder.group({
       id: [(data && data.id) || "", [Validators.required]],
       genre: [(data && data.genre) || "", [Validators.required]],

@@ -1,26 +1,27 @@
-import { Injectable } from "@angular/core";
-import {
-  AngularFirestore,
-  AngularFirestoreCollection,
-} from "@angular/fire/firestore";
+import { Injectable, OnDestroy } from "@angular/core";
+import { AngularFirestore } from "@angular/fire/firestore";
 import { Numba } from "../models/numba";
-import { Observable, of, BehaviorSubject, throwError } from "rxjs";
+import { Observable, BehaviorSubject, throwError, Subscription } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class NumbaService {
+export class NumbaService implements OnDestroy {
   private subject = new BehaviorSubject<Numba[]>([]);
-
+  private collections$: Subscription;
   numbas$: Observable<Numba[]> = this.subject.asObservable();
 
   constructor(private db: AngularFirestore) {}
 
   init() {
-    const collections$ = this.db
+    this.collections$ = this.db
       .collection<Numba>("const")
       .valueChanges()
       .subscribe((numbas) => this.subject.next(numbas));
+  }
+
+  ngOnDestroy() {
+    this.collections$.unsubscribe();
   }
 
   selectById(id: string): Observable<Numba> {

@@ -1,19 +1,22 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import { NumbaService } from "../shared/services/numba.service";
 import { Numba } from "../shared/models/numba";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-select",
   templateUrl: "./select.page.html",
   styleUrls: ["./select.page.scss"],
 })
-export class SelectPage implements OnInit {
+export class SelectPage implements OnInit, OnDestroy {
   numbaList: { [key: string]: Numba[] };
   genres: Set<string>;
   constructor(private numbaService: NumbaService) {}
 
+  sub: Subscription;
+
   ngOnInit() {
-    this.numbaService.selectAll().subscribe((data) => {
+    this.sub = this.numbaService.selectAll().subscribe((data) => {
       this.numbaList = {};
       this.genres = new Set<string>();
 
@@ -27,5 +30,9 @@ export class SelectPage implements OnInit {
         });
       });
     });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }

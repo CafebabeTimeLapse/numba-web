@@ -16,7 +16,6 @@ export class PlayPage implements OnInit {
   ansPos: number;
   width: number;
   height: number;
-
   ans: Numba;
 
   ansString: string;
@@ -28,10 +27,12 @@ export class PlayPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.ans = { id: "", genre: "" };
     this.width = 10;
     this.height = 8;
     this.ansPos = 0;
     this.clearDisp();
+
     this.route.params.subscribe((param) => {
       this.numbaService.selectById(param.id).subscribe((data) => {
         this.ans = data;
@@ -42,7 +43,6 @@ export class PlayPage implements OnInit {
 
   async presentAlert() {
     const alert = await this.alertController.create({
-      cssClass: "my-custom-class",
       header: "Conguratulations!",
       message: "You have memorized " + this.ans.nickname + ".",
       buttons: ["OK"],
