@@ -8,5 +8,5 @@ export interface Numba {
   unit?: string;
   id: string;
   priority?: number;
-  memo?: string;
+  notes?: string;
 }
